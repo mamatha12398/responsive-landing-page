@@ -1,0 +1,979 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+
+    <meta name="viewport"
+          content="width=device-width, initial-scale=1.0">
+
+    <title>SkillCraft Technology - Landing Page</title>
+
+    <style>
+
+        /* =========================
+           BASIC RESET
+        ========================== */
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            scroll-behavior: smooth;
+        }
+
+        body {
+            font-family: Arial, Helvetica, sans-serif;
+            background: #f5f7fb;
+            color: #222;
+            line-height: 1.6;
+        }
+
+
+        /* =========================
+           NAVIGATION BAR
+        ========================== */
+
+        .navbar {
+            position: fixed;
+            top: 0;
+            left: 0;
+
+            width: 100%;
+
+            padding: 18px 7%;
+
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+
+            z-index: 1000;
+
+            background: transparent;
+
+            transition: 0.4s ease;
+        }
+
+        /* Navigation after scrolling */
+
+        .navbar.scrolled {
+            background: #15152b;
+
+            padding-top: 12px;
+            padding-bottom: 12px;
+
+            box-shadow: 0 3px 15px rgba(0, 0, 0, 0.3);
+        }
+
+
+        /* Logo */
+
+        .logo {
+            color: white;
+            text-decoration: none;
+
+            font-size: 26px;
+            font-weight: bold;
+        }
+
+        .logo span {
+            color: #38d9c3;
+        }
+
+
+        /* Navigation links */
+
+        .nav-links {
+            display: flex;
+            list-style: none;
+
+            gap: 10px;
+        }
+
+        .nav-links a {
+            color: white;
+
+            text-decoration: none;
+
+            padding: 9px 16px;
+
+            border-radius: 25px;
+
+            transition: 0.3s;
+        }
+
+
+        /* Hover effect */
+
+        .nav-links a:hover {
+            background: #38d9c3;
+            color: #15152b;
+
+            transform: translateY(-2px);
+        }
+
+
+        /* Active navigation */
+
+        .nav-links a.active {
+            background: #38d9c3;
+            color: #15152b;
+        }
+
+
+        /* Mobile menu button */
+
+        .menu-btn {
+            display: none;
+
+            color: white;
+
+            font-size: 30px;
+
+            cursor: pointer;
+        }
+
+
+
+        /* =========================
+           HOME / HERO SECTION
+        ========================== */
+
+        .hero {
+            min-height: 100vh;
+
+            padding: 140px 8% 80px;
+
+            display: flex;
+            align-items: center;
+
+            color: white;
+
+            background:
+                radial-gradient(
+                    circle at 15% 25%,
+                    rgba(56, 217, 195, 0.25),
+                    transparent 25%
+                ),
+
+                radial-gradient(
+                    circle at 85% 30%,
+                    rgba(80, 130, 255, 0.25),
+                    transparent 25%
+                ),
+
+                linear-gradient(
+                    135deg,
+                    #101020,
+                    #29283d
+                );
+        }
+
+
+        .hero-content {
+            max-width: 750px;
+        }
+
+
+        /* Small heading */
+
+        .tag {
+            display: inline-block;
+
+            padding: 8px 17px;
+
+            border: 1px solid #38d9c3;
+
+            border-radius: 30px;
+
+            color: #38d9c3;
+
+            margin-bottom: 20px;
+
+            font-weight: bold;
+        }
+
+
+        /* Main heading */
+
+        .hero h1 {
+            font-size: clamp(42px, 7vw, 78px);
+
+            line-height: 1.05;
+
+            margin-bottom: 20px;
+        }
+
+        .hero h1 span {
+            color: #38d9c3;
+        }
+
+
+        /* Hero paragraph */
+
+        .hero p {
+            font-size: 18px;
+
+            max-width: 600px;
+
+            color: #ddd;
+
+            margin-bottom: 30px;
+        }
+
+
+        /* Button */
+
+        .btn {
+            display: inline-block;
+
+            padding: 13px 26px;
+
+            border-radius: 30px;
+
+            background: #38d9c3;
+
+            color: #111;
+
+            text-decoration: none;
+
+            font-weight: bold;
+
+            transition: 0.3s;
+        }
+
+
+        .btn:hover {
+            background: white;
+
+            transform: translateY(-3px);
+        }
+
+
+
+        /* =========================
+           COMMON SECTION
+        ========================== */
+
+        section {
+            min-height: 80vh;
+
+            padding: 100px 8%;
+
+            display: flex;
+
+            align-items: center;
+        }
+
+
+        .container {
+            width: 100%;
+
+            max-width: 1100px;
+
+            margin: auto;
+        }
+
+
+        .section-title {
+            font-size: 42px;
+
+            margin-bottom: 15px;
+        }
+
+
+        .section-text {
+            max-width: 700px;
+
+            color: #666;
+
+            margin-bottom: 35px;
+        }
+
+
+
+        /* =========================
+           SERVICES
+        ========================== */
+
+        #services {
+            background: #f5f7fb;
+        }
+
+
+        .cards {
+            display: grid;
+
+            grid-template-columns:
+                repeat(3, 1fr);
+
+            gap: 25px;
+        }
+
+
+        .card {
+            background: white;
+
+            padding: 30px;
+
+            border-radius: 18px;
+
+            box-shadow:
+                0 8px 25px
+                rgba(0, 0, 0, 0.08);
+
+            transition: 0.3s;
+        }
+
+
+        /* Card hover */
+
+        .card:hover {
+            transform: translateY(-8px);
+
+            box-shadow:
+                0 15px 35px
+                rgba(0, 0, 0, 0.15);
+        }
+
+
+        .card h3 {
+            margin-bottom: 10px;
+
+            color: #222;
+        }
+
+
+        .card p {
+            color: #666;
+        }
+
+
+
+        /* =========================
+           ABOUT
+        ========================== */
+
+        #about {
+            background: #e9ecf5;
+        }
+
+
+
+        /* =========================
+           CONTACT
+        ========================== */
+
+        #contact {
+            background: #15152b;
+
+            color: white;
+        }
+
+
+        #contact .section-text {
+            color: #ccc;
+        }
+
+
+        .contact-box {
+            display: flex;
+
+            flex-wrap: wrap;
+
+            gap: 20px;
+        }
+
+
+        .contact-item {
+            background:
+                rgba(255, 255, 255, 0.08);
+
+            padding: 20px;
+
+            border-radius: 12px;
+
+            min-width: 200px;
+        }
+
+
+
+        /* =========================
+           FOOTER
+        ========================== */
+
+        footer {
+            background: #0d0d18;
+
+            color: #aaa;
+
+            text-align: center;
+
+            padding: 20px;
+        }
+
+
+
+        /* =========================
+           RESPONSIVE DESIGN
+        ========================== */
+
+        @media (max-width: 768px) {
+
+            /* Show hamburger */
+
+            .menu-btn {
+                display: block;
+            }
+
+
+            /* Mobile navigation */
+
+            .nav-links {
+                position: absolute;
+
+                top: 65px;
+
+                right: 6%;
+
+                width: 220px;
+
+                display: none;
+
+                flex-direction: column;
+
+                background: #15152b;
+
+                padding: 15px;
+
+                border-radius: 12px;
+
+                box-shadow:
+                    0 8px 20px
+                    rgba(0, 0, 0, 0.3);
+            }
+
+
+            /* Show mobile menu */
+
+            .nav-links.show {
+                display: flex;
+            }
+
+
+            .nav-links a {
+                display: block;
+            }
+
+
+            /* Hero */
+
+            .hero {
+                text-align: center;
+
+                padding-left: 6%;
+
+                padding-right: 6%;
+            }
+
+
+            .hero p {
+                margin-left: auto;
+
+                margin-right: auto;
+            }
+
+
+            /* Sections */
+
+            section {
+                padding: 80px 6%;
+            }
+
+
+            /* Service cards */
+
+            .cards {
+                grid-template-columns: 1fr;
+            }
+
+
+            .section-title {
+                font-size: 34px;
+            }
+
+        }
+
+
+
+        /* Small mobile screens */
+
+        @media (max-width: 450px) {
+
+            .logo {
+                font-size: 21px;
+            }
+
+
+            .hero h1 {
+                font-size: 42px;
+            }
+
+
+            .hero p {
+                font-size: 16px;
+            }
+
+        }
+
+    </style>
+</head>
+
+
+<body>
+
+
+    <!-- =================================
+         NAVIGATION
+    ================================== -->
+
+    <nav class="navbar" id="navbar">
+
+        <a href="#home" class="logo">
+            Skill<span>Craft</span>
+        </a>
+
+
+        <!-- Mobile menu icon -->
+
+        <div class="menu-btn" id="menuBtn">
+            &#9776;
+        </div>
+
+
+        <!-- Menu -->
+
+        <ul class="nav-links" id="navLinks">
+
+            <li>
+                <a href="#home" class="active">
+                    Home
+                </a>
+            </li>
+
+            <li>
+                <a href="#services">
+                    Services
+                </a>
+            </li>
+
+            <li>
+                <a href="#about">
+                    About
+                </a>
+            </li>
+
+            <li>
+                <a href="#contact">
+                    Contact
+                </a>
+            </li>
+
+        </ul>
+
+    </nav>
+
+
+
+    <!-- =================================
+         HOME SECTION
+    ================================== -->
+
+    <section class="hero" id="home">
+
+        <div class="hero-content">
+
+            <div class="tag">
+                SKILLCRAFT TECHNOLOGY
+            </div>
+
+
+            <h1>
+                Build Your
+                <span>Digital Future</span>
+            </h1>
+
+
+            <p>
+                We create modern, responsive and
+                user-friendly digital experiences
+                using the latest web technologies.
+            </p>
+
+
+            <a href="#services" class="btn">
+                Explore Services
+            </a>
+
+        </div>
+
+    </section>
+
+
+
+    <!-- =================================
+         SERVICES SECTION
+    ================================== -->
+
+    <section id="services">
+
+        <div class="container">
+
+            <h2 class="section-title">
+                Our Services
+            </h2>
+
+
+            <p class="section-text">
+                Explore our services designed to
+                create simple, modern and responsive
+                websites.
+            </p>
+
+
+            <div class="cards">
+
+
+                <!-- Card 1 -->
+
+                <div class="card">
+
+                    <h3>
+                        Web Development
+                    </h3>
+
+                    <p>
+                        Responsive websites built
+                        with HTML, CSS and JavaScript.
+                    </p>
+
+                </div>
+
+
+
+                <!-- Card 2 -->
+
+                <div class="card">
+
+                    <h3>
+                        UI Design
+                    </h3>
+
+                    <p>
+                        Clean and attractive interfaces
+                        designed for a better user
+                        experience.
+                    </p>
+
+                </div>
+
+
+
+                <!-- Card 3 -->
+
+                <div class="card">
+
+                    <h3>
+                        Responsive Design
+                    </h3>
+
+                    <p>
+                        Websites that work smoothly
+                        on mobile, tablet and desktop
+                        screens.
+                    </p>
+
+                </div>
+
+
+            </div>
+
+        </div>
+
+    </section>
+
+
+
+    <!-- =================================
+         ABOUT SECTION
+    ================================== -->
+
+    <section id="about">
+
+        <div class="container">
+
+            <h2 class="section-title">
+                About Us
+            </h2>
+
+
+            <p class="section-text">
+                SkillCraft Technology focuses on
+                building practical digital solutions.
+                Our goal is to create websites that
+                are fast, simple, attractive and
+                accessible on different screen sizes.
+            </p>
+
+
+            <a href="#contact" class="btn">
+                Contact Us
+            </a>
+
+        </div>
+
+    </section>
+
+
+
+    <!-- =================================
+         CONTACT SECTION
+    ================================== -->
+
+    <section id="contact">
+
+        <div class="container">
+
+            <h2 class="section-title">
+                Contact Us
+            </h2>
+
+
+            <p class="section-text">
+                Have a project in mind?
+                Get in touch with us.
+            </p>
+
+
+            <div class="contact-box">
+
+
+                <!-- Email -->
+
+                <div class="contact-item">
+
+                    <strong>
+                        Email
+                    </strong>
+
+                    <p>
+                        hello@skillcraft.com
+                    </p>
+
+                </div>
+
+
+
+                <!-- Phone -->
+
+                <div class="contact-item">
+
+                    <strong>
+                        Phone
+                    </strong>
+
+                    <p>
+                        +91 98765 43210
+                    </p>
+
+                </div>
+
+
+
+                <!-- Location -->
+
+                <div class="contact-item">
+
+                    <strong>
+                        Location
+                    </strong>
+
+                    <p>
+                        Telangana, India
+                    </p>
+
+                </div>
+
+
+            </div>
+
+        </div>
+
+    </section>
+
+
+
+    <!-- =================================
+         FOOTER
+    ================================== -->
+
+    <footer>
+
+        © 2026 SkillCraft Technology.
+        All Rights Reserved.
+
+    </footer>
+
+
+
+    <!-- =================================
+         JAVASCRIPT
+    ================================== -->
+
+    <script>
+
+        /* Get elements */
+
+        const navbar =
+            document.getElementById("navbar");
+
+        const navLinks =
+            document.querySelectorAll(
+                ".nav-links a"
+            );
+
+        const menuBtn =
+            document.getElementById("menuBtn");
+
+        const navMenu =
+            document.getElementById("navLinks");
+
+
+
+        /* =================================
+           CHANGE NAVIGATION ON SCROLL
+        ================================== */
+
+        window.addEventListener(
+            "scroll",
+            function () {
+
+                if (window.scrollY > 50) {
+
+                    navbar.classList.add(
+                        "scrolled"
+                    );
+
+                } else {
+
+                    navbar.classList.remove(
+                        "scrolled"
+                    );
+
+                }
+
+
+
+                /* =================================
+                   ACTIVE MENU ITEM
+                ================================== */
+
+                let current = "";
+
+
+                document
+                    .querySelectorAll("section")
+                    .forEach(section => {
+
+                        const sectionTop =
+                            section.offsetTop - 120;
+
+                        const sectionHeight =
+                            section.offsetHeight;
+
+
+                        if (
+                            window.scrollY >= sectionTop &&
+                            window.scrollY <
+                            sectionTop + sectionHeight
+                        ) {
+
+                            current =
+                                section.getAttribute(
+                                    "id"
+                                );
+
+                        }
+
+                    });
+
+
+
+                /* Change active link */
+
+                navLinks.forEach(link => {
+
+                    link.classList.remove(
+                        "active"
+                    );
+
+
+                    if (
+                        link.getAttribute("href") ===
+                        "#" + current
+                    ) {
+
+                        link.classList.add(
+                            "active"
+                        );
+
+                    }
+
+                });
+
+            }
+        );
+
+
+
+        /* =================================
+           MOBILE MENU
+        ================================== */
+
+        menuBtn.addEventListener(
+            "click",
+            function () {
+
+                navMenu.classList.toggle(
+                    "show"
+                );
+
+            }
+        );
+
+
+
+        /* =================================
+           CLOSE MOBILE MENU
+           AFTER CLICKING LINK
+        ================================== */
+
+        navLinks.forEach(link => {
+
+            link.addEventListener(
+                "click",
+                function () {
+
+                    navMenu.classList.remove(
+                        "show"
+                    );
+
+                }
+            );
+
+        });
+
+    </script>
+
+
+</body>
+</html>
